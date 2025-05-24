@@ -80,11 +80,13 @@ EQ
 PUSH2 0x0054
 JUMPI
 
-// 0x0034 jump destination
+// 0x0034 jump destination if the call data is less than function selector size
 JUMPDEST
 PUSH0
 DUP1
 REVERT
+
+
 JUMPDEST
 PUSH2 0x0052
 PUSH1 0x04
