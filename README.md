@@ -1,19 +1,27 @@
-## Foundry
+# HorseStore
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+A simple smart contract project that demonstrates basic state management in Solidity. The project includes both Solidity and Huff implementations of a horse store contract.
 
-Foundry consists of:
+## Project Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+The HorseStore contract is a basic state management contract that:
+- Tracks the number of horses in the store
+- Allows updating the horse count
+- Provides a view function to read the current horse count
 
-## Documentation
+The project includes:
+- Solidity implementation (`HorseStoreV1.sol`)
+- Huff implementation (`HorseStoreV1.huff`)
+- Test suite
+- Deployment scripts
 
-https://book.getfoundry.sh/
+## Development
 
-## Usage
+This project uses Foundry for development, testing, and deployment.
+
+### Prerequisites
+
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
 ### Build
 
@@ -39,7 +47,7 @@ $ forge fmt
 $ forge snapshot
 ```
 
-### Anvil
+### Anvil (Local Development)
 
 ```shell
 $ anvil
@@ -64,3 +72,7 @@ $ forge --help
 $ anvil --help
 $ cast --help
 ```
+
+## Foundry Documentation
+
+For more information about Foundry, visit the [official documentation](https://book.getfoundry.sh/).

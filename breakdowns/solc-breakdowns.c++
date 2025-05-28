@@ -65,20 +65,20 @@ PUSH2 0x0034 // [0x0034, callData.length < 0x04]
 JUMPI        // [callData.length]
 
 
-PUSH0
-CALLDATALOAD
-PUSH1 0xe0
-SHR
-DUP1
-PUSH4 0xcdfead2e
-EQ
-PUSH2 0x0038
-JUMPI
-DUP1
-PUSH4 0xe026c017
-EQ
-PUSH2 0x0054
-JUMPI
+PUSH0        // [0x00]
+CALLDATALOAD // [bytes32 of callData]
+PUSH1 0xe0   // [0xe0, bytes32 of callData]
+SHR          // [bytes32 of callData[0:4]]
+DUP1         // [bytes32 of callData[0:4], bytes32 of callData[0:4]]
+PUSH4 0xcdfead2e // [0xcdfead2e, bytes32 of callData[0:4], bytes32 of callData[0:4]]
+EQ           // [bytes32 of callData[0:4] == 0xcdfead2e, bytes32 of callData[0:4]]
+PUSH2 0x0038 // [0x0038, bytes32 of callData[0:4] == 0xcdfead2e, bytes32 of callData[0:4]]
+JUMPI        // [bytes32 of callData[0:4]]
+DUP1         // [bytes32 of callData[0:4], bytes32 of callData[0:4]]
+PUSH4 0xe026c017 // [0xe026c017, bytes32 of callData[0:4], bytes32 of callData[0:4]]
+EQ           // [bytes32 of callData[0:4] == 0xe026c017, bytes32 of callData[0:4]]
+PUSH2 0x0054 // [0x0054, bytes32 of callData[0:4] == 0xe026c017, bytes32 of callData[0:4]]
+JUMPI        // [bytes32 of callData[0:4]]
 
 // 0x0034 jump destination if the call data is less than function selector size
 JUMPDEST
@@ -88,10 +88,10 @@ REVERT
 
 
 JUMPDEST
-PUSH2 0x0052
-PUSH1 0x04
-DUP1
-CALLDATASIZE
+PUSH2 0x0052 // [0x0052, bytes32 of callData[0:4]]
+PUSH1 0x04   // [0x04, 0x0052, bytes32 of callData[0:4]]
+DUP1         // [0x04, 0x04, 0x0052, bytes32 of callData[0:4]]
+CALLDATASIZE // [callData.length, 0x04, 0x0052, bytes32 of callData[0:4]]
 SUB
 DUP2
 ADD
@@ -101,15 +101,19 @@ SWAP2
 SWAP1
 PUSH2 0x00ba
 JUMP
+
 JUMPDEST
 PUSH2 0x0072
 JUMP
+
 JUMPDEST
 STOP
+
 JUMPDEST
 PUSH2 0x005c
 PUSH2 0x007b
 JUMP
+
 JUMPDEST
 PUSH1 0x40
 MLOAD
@@ -118,6 +122,7 @@ SWAP2
 SWAP1
 PUSH2 0x00f4
 JUMP
+
 JUMPDEST
 PUSH1 0x40
 MLOAD
@@ -126,6 +131,7 @@ SWAP2
 SUB
 SWAP1
 RETURN
+
 JUMPDEST
 DUP1
 PUSH0
@@ -135,6 +141,7 @@ SSTORE
 POP
 POP
 JUMP
+
 JUMPDEST
 PUSH0
 DUP1
@@ -143,10 +150,12 @@ SWAP1
 POP
 SWAP1
 JUMP
+
 JUMPDEST
 PUSH0
 DUP1
 REVERT
+
 JUMPDEST
 PUSH0
 DUP2
@@ -156,22 +165,27 @@ SWAP2
 SWAP1
 POP
 JUMP
+
 JUMPDEST
 PUSH2 0x0099
 DUP2
 PUSH2 0x0087
 JUMP
+
 JUMPDEST
 DUP2
 EQ
 PUSH2 0x00a3
+
 JUMPI
 PUSH0
 DUP1
 REVERT
+
 JUMPDEST
 POP
 JUMP
+
 JUMPDEST
 PUSH0
 DUP2
@@ -182,12 +196,14 @@ PUSH2 0x00b4
 DUP2
 PUSH2 0x0090
 JUMP
+
 JUMPDEST
 SWAP3
 SWAP2
 POP
 POP
 JUMP
+
 JUMPDEST
 PUSH0
 PUSH1 0x20
@@ -201,6 +217,7 @@ JUMPI
 PUSH2 0x00ce
 PUSH2 0x0083
 JUMP
+
 JUMPDEST
 JUMPDEST
 PUSH0
