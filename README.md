@@ -27,6 +27,7 @@ This project uses Foundry for development, testing, and deployment.
 
 ```shell
 $ forge build
+$ solc --strict-assembly --optimize --optimize-runs 20000 ./yul/HorseStoreYul.yul --bin
 ```
 
 ### Test
